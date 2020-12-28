@@ -1,10 +1,11 @@
 class Rope {
-  constructor(bodyA, bodyB, xOff, yOff) {
+  constructor(bodyA, bodyB, offsetX, offsetY) {
+    this.offsetX = offsetX;
+    this.offsetY = offsetY;
     var options = {
       bodyA: bodyA,
       bodyB: bodyB,
-      pointB: { x: xOff, y: yOff },
-      lenght: 50,
+      pointB: { x: this.offsetX, y: this.offsetY },
     };
     this.rope = Constraint.create(options);
     World.add(world, this.rope);
@@ -14,6 +15,13 @@ class Rope {
     var posB = this.rope.bodyB.position;
     strokeWeight(4);
     stroke("white");
-    line(posA.x, posA.y, posB.x, posB.y);
+
+    var thread1X = posA.x;
+    var thread1Y = posA.y;
+
+    var thread2X = posB.x + this.offsetX;
+    var thread2Y = posB.y + this.offsetY;
+
+    line(thread1X, thread1Y, thread2X, thread2Y);
   }
 }

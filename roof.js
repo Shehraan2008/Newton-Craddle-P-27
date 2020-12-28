@@ -12,7 +12,8 @@ class Roof {
     var pos = this.body.position;
     rectMode(CENTER);
     translate(pos.x, pos.y);
-    fill("grey");
+    noStroke();
+    fill("blue");
     rect(0, 0, this.width, this.height);
   }
 }

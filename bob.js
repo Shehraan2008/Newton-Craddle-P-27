@@ -2,12 +2,14 @@ class Bob {
   constructor(x, y, r) {
     var options = {
       isStatic: false,
-      restitution: 0.3,
-      friction: 0.5,
-      density: 1.2,
+      restitution: 1,
+      friction: 0,
+      density: 0.8,
     };
-    this.body = Bodies.circle(x, y, r, options);
     this.r = r;
+    this.x = x;
+    this.y = y;
+    this.body = Bodies.circle(this.x, this.y, this.r / 2, options);
     World.add(world, this.body);
   }
   show() {
@@ -15,8 +17,8 @@ class Bob {
     push();
     translate(pos.x, pos.y);
     noStroke();
-    fill(225, 198, 153);
-    ellipse(0, 0, this.r);
+    fill("orange");
+    ellipse(0, 0, this.r, this.r);
     pop();
   }
 }
